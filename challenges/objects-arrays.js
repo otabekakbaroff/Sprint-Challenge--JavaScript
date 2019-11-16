@@ -11,7 +11,10 @@ function dinosaur(name,diet,weigh,length,period){
      diet,
      weigh,
      length,
-     period
+     period,
+     roar(){
+      return "RAWERSRARARWERSARARARRRR!";
+     }
   }
 }
 // tyrannosaurus, carnivorous, 7000kg, 12m, Late Cretaceous
@@ -33,11 +36,9 @@ console.log(stegosaurus.length);
 
 // What time period did tyrannosaurus live in?
 console.log(tyrannosaurus.period);
-
+console.log(tyrannosaurus.roar());
 
 // Create a new roar method for the tyrannosaurus.  When called, return "RAWERSRARARWERSARARARRRR!" Log the result.
-tyrannosaurus.roar=function(){return "RAWERSRARARWERSARARARRRR!"};
-console.log(tyrannosaurus.roar());
 
 
 // ==== Arrays ====
@@ -121,11 +122,11 @@ The zoos need a list of all their animal's names (animal_name only) converted to
 
 */
 
-const lowCaseAnimalNames=[];
-let pushThis=zooAnimals.map(function(item){
- return item.animal_name;
+let lowCaseAnimalNames=[];
+  lowCaseAnimalNames=zooAnimals.map(function(item){
+ return item.animal_name.toLowerCase();
 })
-lowCaseAnimalNames.push(pushThis);
+
 
 console.log(lowCaseAnimalNames);
 
@@ -147,10 +148,19 @@ The zoos need to know their total animal population across the United States. Fi
 
 */
 let populationTotal = 0;
+let newArray=[];
+zooAnimals.forEach(function(item){
+    newArray.push(item.population);
+})
+console.log(newArray);
+let reducer =(acc,curr)=>{
+  return acc+curr;
+}
+populationTotal=newArray.reduce(reducer,0);
+
 
 
 console.log(populationTotal);
-
 
 /*
 
